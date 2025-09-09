@@ -11,6 +11,17 @@ locals {
   }
 }
 
+terraform {
+  required_version = ">= 1.3.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.67"   # ✅ pin provider to 4.x (works with eks 19.x, vpc 4.x)
+    }
+  }
+}
+
 provider "aws" {
-  region = "us-east-1"
+  region = local.region
 }
